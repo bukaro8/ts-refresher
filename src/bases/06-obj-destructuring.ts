@@ -3,6 +3,7 @@ type Person={
     lastName:string;
     age:number
     address:Address
+    city:string
 }
 type Address={
     postcode:number;
@@ -15,8 +16,20 @@ const person:Person={
     address:{
         postcode:123,
         city:'New York'
-    }
+    },
+    city:'ciudad'
 
 }
-const {firstName}=person
-console.log(firstName)
+const useContext=({firstName,lastName,age,city}:Person)=>{
+    return {
+        keyName:firstName,
+        user:{
+            lastName,
+            age
+        },
+        city
+    }
+}
+
+const {keyName,city,user}=useContext(person)
+console.log(keyName,city,user.age)
